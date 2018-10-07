@@ -22,14 +22,17 @@ def index():
 @app.route('/graph', methods=['POST'])
 def graph():
 #    if request.method == 'POST':
-        app.vars['ticker'] = request.form['ticker']
+#         app.vars['ticker'] = request.form['ticker']
+        app.vars['start'] = request.form['start']
+        app.vars['end'] = request.form['end']
         print(request.form['start'])
         print(request.form['end'])
         
         # api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json?api_key=gVz7XbzeecyxHdkCn8yB' % app.vars['ticker']
+        api_url = 'https://www.quandl.com/api/v3/datasets/ZILLOW/C25709_ZRISFRR.json?api_key=QT-coVZNkYPJCs6R9Tkj&start_date=%s&end_date=%s' % (app.vars['start'], app.vars['end'])
+        print(api_url)
 
-
-        api_url = 'https://www.quandl.com/api/v3/datasets/ZILLOW/C25709_ZRISFRR.json?api_key=QT-coVZNkYPJCs6R9Tkj'
+        # api_url = 'https://www.quandl.com/api/v3/datasets/ZILLOW/C25709_ZRISFRR.json?api_key=QT-coVZNkYPJCs6R9Tkj&start_date=2010-11-01&end_date=2013-11-30'
         session = requests.Session()
         session.mount('http://', requests.adapters.HTTPAdapter(max_retries=3))
         raw_data = session.get(api_url)
