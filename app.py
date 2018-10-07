@@ -43,7 +43,7 @@ def graph():
 
         df['Date'] = pandas.to_datetime(df['Date'])
 
-        p = figure(title='Stock prices for %s' % app.vars['ticker'],
+        p = figure(title='Stock prices for ',
             x_axis_label='date',
             x_axis_type='datetime')
         
