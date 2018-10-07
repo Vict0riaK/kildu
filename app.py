@@ -23,6 +23,8 @@ def index():
 def graph():
 #    if request.method == 'POST':
         app.vars['ticker'] = request.form['ticker']
+        print(request.form['start'])
+        print(request.form['end'])
         
         # api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json?api_key=gVz7XbzeecyxHdkCn8yB' % app.vars['ticker']
 
