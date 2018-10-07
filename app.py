@@ -27,7 +27,10 @@ def graph():
         app.vars['end'] = request.form['end']
         print(request.form['start'])
         print(request.form['end'])
-        
+
+        if (app.vars['start'] < '2010-01-01') or (app.vars['end'] > '2018-08-01') or (app.vars['start'] > app.vars['end']):
+            print ("INVALID DATES")
+
         # api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json?api_key=gVz7XbzeecyxHdkCn8yB' % app.vars['ticker']
         api_url = 'https://www.quandl.com/api/v3/datasets/ZILLOW/C25709_ZRISFRR.json?api_key=QT-coVZNkYPJCs6R9Tkj&start_date=%s&end_date=%s' % (app.vars['start'], app.vars['end'])
         print(api_url)
@@ -43,7 +46,7 @@ def graph():
 
         df['Date'] = pandas.to_datetime(df['Date'])
 
-        p = figure(title='Stock prices for ',
+        p = figure(title='Home Value Index',
             x_axis_label='date',
             x_axis_type='datetime')
         
