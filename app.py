@@ -13,15 +13,15 @@ app.vars={}
 
 @app.route('/')
 def main():
-  return render_template('/index')
-
-@app.route('/error')
-def error():
-  return render_template('/error')
+  return redirect('/index')
 
 @app.route('/index', methods=['GET'])
 def index():
     return render_template('index.html')
+
+@app.route('/error')
+def error():
+    return render_template('error.html')
     
 @app.route('/graph', methods=['POST'])
 def graph():
